@@ -1,45 +1,25 @@
-openhrp Cookbook
+OpenHRP Cookbook
 ================
-TODO: Enter the cookbook description here.
 
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+This cookbook will install OpenHRP a dynamics simulator for robotics.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
 
-e.g.
-#### packages
-- `toaster` - openhrp needs toaster to brown your bagel.
+- `build-essential` - OpenHRP requires c++ compiler.
+- `python` - OpenHRP requires python.
+- `omniorb` - OpenHRP requires omniORB.
+- `collada-d0m` - OpenHRP requires collada-dom.
+- `openrtm-aist` - OpenHRP requires OpenRTM-aist.
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
 
-e.g.
-#### openhrp::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['openhrp']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+No attributes yet.
 
 Usage
 -----
-#### openhrp::default
-TODO: Write usage instructions for each cookbook.
 
-e.g.
 Just include `openhrp` in your node's `run_list`:
 
 ```json
@@ -53,9 +33,7 @@ Just include `openhrp` in your node's `run_list`:
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
 
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
@@ -65,4 +43,7 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+
+Apache 2.0
+
+Authors: Yosuke Matsusaka
