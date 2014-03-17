@@ -25,7 +25,7 @@ include_recipe "collada-dom"
 include_recipe "openrtm-aist"
 
 pkgs = value_for_platform_family(
-  ["debian"] => %w{pkg-config libtool uuid-dev libyaml-dev
+  ["debian"] => %w{cmake pkg-config libtool uuid-dev libyaml-dev
 libboost-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-regex-dev libboost-signals-dev libboost-thread-dev
 liblapack-dev libatlas-base-dev libatlas-dev libblas-dev
 libeigen3-dev
