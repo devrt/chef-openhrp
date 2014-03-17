@@ -3,6 +3,8 @@ OpenHRP Cookbook
 
 This cookbook will install OpenHRP a dynamics simulator for robotics.
 
+[![Build Status](http://ci.devrt.tk/job/chef-openhrp/badge/icon)](http://ci.devrt.tk/job/chef-openhrp/)
+
 Requirements
 ------------
 
