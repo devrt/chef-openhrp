@@ -21,6 +21,7 @@ include_recipe 'apt'
 include_recipe 'build-essential'
 include_recipe 'python'
 include_recipe 'subversion::client'
+include_recipe 'supervisor'
 include_recipe 'omniorb'
 include_recipe 'collada-dom'
 include_recipe 'openrtm-aist'
@@ -55,4 +56,28 @@ subversion 'openhrp' do
   svn_info_args '--no-auth-cache --non-interactive --trust-server-cert'
   action :sync
   notifies :run, 'bash[compile_openhrp]', :immediately
+end
+
+supervisor_service 'openhrp-model-loader' do
+  action :enable
+  command '/usr/local/bin/openhrp-model-loader -ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService'
+  autostart true
+  autorestart true
+  user 'nobody'
+end
+
+supervisor_service 'openhrp-collision-detector' do
+  action :enable
+  command '/usr/local/bin/openhrp-collision-detector -ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService'
+  autostart true
+  autorestart true
+  user 'nobody'
+end
+
+supervisor_service 'openhrp-aist-dynamics-simulator' do
+  action :enable
+  command '/usr/local/bin/openhrp-aist-dynamics-simulator -ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService'
+  autostart true
+  autorestart true
+  user 'nobody'
 end
