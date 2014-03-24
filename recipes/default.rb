@@ -17,21 +17,16 @@
 # limitations under the License.
 #
 
-include_recipe "apt"
-include_recipe "build-essential"
-include_recipe "python"
-include_recipe "subversion::client"
-include_recipe "omniorb"
-include_recipe "collada-dom"
-include_recipe "openrtm-aist"
+include_recipe 'apt'
+include_recipe 'build-essential'
+include_recipe 'python'
+include_recipe 'subversion::client'
+include_recipe 'omniorb'
+include_recipe 'collada-dom'
+include_recipe 'openrtm-aist'
 
 pkgs = value_for_platform_family(
-  ["debian"] => %w{cmake pkg-config libtool uuid-dev libyaml-dev
-libboost-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-regex-dev libboost-signals-dev libboost-thread-dev
-liblapack-dev libatlas-base-dev libatlas-dev libblas-dev
-libeigen3-dev
-f2c libf2c2-dev libgfortran3 libgfortran3-dbg
-zlib1g-dev libjpeg62-dev libpng12-dev}
+  ['debian'] => %w(cmake pkg-config libtool uuid-dev libyaml-dev libboost-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-regex-dev libboost-signals-dev libboost-thread-dev liblapack-dev libatlas-base-dev libatlas-dev libblas-dev libeigen3-dev f2c libf2c2-dev libgfortran3 libgfortran3-dbg zlib1g-dev libjpeg62-dev libpng12-dev)
 )
 
 pkgs.each do |pkg|
@@ -40,9 +35,9 @@ pkgs.each do |pkg|
   end
 end
 
-python_pip "PyYaml"
+python_pip 'PyYaml'
 
-bash "compile_openhrp" do
+bash 'compile_openhrp' do
   cwd "#{Chef::Config['file_cache_path']}/openhrp"
   code <<-EOH
       cmake . -DCOMPILE_JAVA_STUFF=OFF -DENABLE_DOXYGEN=OFF -DOPENRTM_DIR=/usr/local/
@@ -52,12 +47,12 @@ bash "compile_openhrp" do
   action :nothing
 end
 
-subversion "openhrp" do
-  repository "https://openrtp.org/svn/hrg/openhrp/3.1/trunk/"
-  revision "HEAD"
+subversion 'openhrp' do
+  repository 'https://openrtp.org/svn/hrg/openhrp/3.1/trunk/'
+  revision 'HEAD'
   destination "#{Chef::Config[:file_cache_path]}/openhrp"
-  svn_arguments "--no-auth-cache --non-interactive --trust-server-cert"
-  svn_info_args "--no-auth-cache --non-interactive --trust-server-cert"
+  svn_arguments '--no-auth-cache --non-interactive --trust-server-cert'
+  svn_info_args '--no-auth-cache --non-interactive --trust-server-cert'
   action :sync
-  notifies :run, "bash[compile_openhrp]", :immediately
+  notifies :run, 'bash[compile_openhrp]', :immediately
 end
