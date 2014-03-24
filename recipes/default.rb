@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+include_recipe "apt"
 include_recipe "build-essential"
 include_recipe "python"
 include_recipe "subversion::client"
