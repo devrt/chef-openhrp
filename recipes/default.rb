@@ -60,7 +60,7 @@ end
 
 supervisor_service 'openhrp-model-loader' do
   action :enable
-  command '/usr/local/bin/openhrp-model-loader -ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService'
+  command '/usr/local/bin/openhrp-model-loader -ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService -ORBgiopMaxMsgSize 20971520'
   autostart true
   autorestart true
   user 'nobody'
@@ -68,7 +68,7 @@ end
 
 supervisor_service 'openhrp-collision-detector' do
   action :enable
-  command '/usr/local/bin/openhrp-collision-detector -ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService'
+  command '/usr/local/bin/openhrp-collision-detector -ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService -ORBgiopMaxMsgSize 20971520'
   autostart true
   autorestart true
   user 'nobody'
@@ -76,7 +76,7 @@ end
 
 supervisor_service 'openhrp-aist-dynamics-simulator' do
   action :enable
-  command '/usr/local/bin/openhrp-aist-dynamics-simulator -ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService'
+  command '/usr/local/bin/openhrp-aist-dynamics-simulator -ORBInitRef NameService=corbaloc:iiop:localhost:2809/NameService -ORBgiopMaxMsgSize 20971520'
   autostart true
   autorestart true
   user 'nobody'
